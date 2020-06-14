@@ -1,0 +1,77 @@
+# Spring boot application
+spring.application.name = yukon-upms-provider
+server.port = 9071
+
+# dubbo
+spring.dubbo.application.id = yukon-upms-provider
+spring.dubbo.application.name = yukon-upms-provider
+spring.dubbo.registry.address = zookeeper://127.0.0.1:2181
+spring.dubbo.server = true
+spring.dubbo.protocol.name = dubbo
+spring.dubbo.protocol.port = 12106
+
+# logback
+logging.config = classpath:logbackConfig.xml
+
+# Base packages to scan Dubbo Components (e.g @Service , @Reference)
+dubbo.scan.basePackages = com.lyl.yukon.upms.provider.service
+
+# redis
+spring.redis.database = 0
+spring.redis.host = 192.168.0.200
+spring.redis.port = 6379
+spring.redis.password = ccadmin@$8888
+spring.redis.jedis.pool.max-active = 60
+spring.redis.jedis.pool.max-wait = 11ms
+spring.redis.jedis.pool.max-idle = 30
+spring.redis.jedis.pool.min-idle = 6
+spring.redis.timeout = 3000ms
+spring.redis.ssl = false
+
+# mybatis
+mybatis.config-location = classpath:mybatis-config.xml
+mybatis.mapper-locations = classpath*:mybatis/**/*.xml
+
+###start ------ligj
+spring.datasource.read.url = jdbc:mysql://127.0.0.1:3306/yukon?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+spring.datasource.read.username = root
+spring.datasource.read.password = 331844
+spring.datasource.read.driver-class-name = com.mysql.jdbc.Driver
+
+spring.datasource.read.initial-size = 10
+spring.datasource.read.max-active = 30
+spring.datasource.read.min-idle = 3
+spring.datasource.read.max-wait = 3000
+spring.datasource.read.pool-prepared-statements = false
+spring.datasource.read.max-pool-prepared-statement-per-connection-size = -1
+spring.datasource.read.max-open-prepared-statements = -1
+spring.datasource.read.validation-query = select 1
+spring.datasource.read.validation-query-timeout = 1000
+spring.datasource.read.test-on-borrow = true
+spring.datasource.read.test-on-return = false
+spring.datasource.read.test-while-idle = false
+spring.datasource.read.time-between-eviction-runs-millis = 300000
+spring.datasource.read.min-evictable-idle-time-millis = 1800000
+spring.datasource.read.max-evictable-idle-time-millis = 3600000
+
+
+spring.datasource.write.url = jdbc:mysql://127.0.0.1:3306/yukon?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+spring.datasource.write.username = root
+spring.datasource.write.password = 331844
+spring.datasource.write.driver-class-name = com.mysql.jdbc.Driver
+
+spring.datasource.write.initial-size = 10
+spring.datasource.write.max-active = 30
+spring.datasource.write.min-idle = 3
+spring.datasource.write.max-wait = 3000
+spring.datasource.write.pool-prepared-statements = false
+spring.datasource.write.max-pool-prepared-statement-per-connection-size = -1
+spring.datasource.write.max-open-prepared-statements = -1
+spring.datasource.write.validation-query = select 1
+spring.datasource.write.validation-query-timeout = 1000
+spring.datasource.write.test-on-borrow = true
+spring.datasource.write.test-on-return = false
+spring.datasource.write.test-while-idle = false
+spring.datasource.write.time-between-eviction-runs-millis = 300000
+spring.datasource.write.min-evictable-idle-time-millis = 1800000
+spring.datasource.write.max-evictable-idle-time-millis = 3600000

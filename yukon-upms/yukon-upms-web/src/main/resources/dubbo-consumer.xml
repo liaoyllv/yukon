@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="${spring.dubbo.application.name}"/>
+    <!-- 注册中心地址 -->
+    <dubbo:registry address="${spring.dubbo.registry.address}"/>
+    <!-- 服务接口 -->
+    <dubbo:reference id="userService" interface="com.lyl.yukon.upms.api.service.IUserService"
+                     check="false" version="1.0.0" retries="0"/>
+    <dubbo:reference id="menuService" interface="com.lyl.yukon.upms.api.service.IMenuService"
+                     check="false" version="1.0.0" retries="0"/>
+    <dubbo:reference id="roleService" interface="com.lyl.yukon.upms.api.service.IRoleService"
+                     check="false" version="1.0.0" retries="0"/>
+    <dubbo:reference id="officeService" interface="com.lyl.yukon.upms.api.service.IOfficeService"
+                     check="false" version="1.0.0" retries="0"/>
+    <dubbo:reference id="dictService" interface="com.lyl.yukon.upms.api.service.IDictService"
+                     check="false" version="1.0.0" retries="0"/>
+    <dubbo:reference id="orgService" interface="com.lyl.yukon.upms.api.service.IOrgService"
+                     check="false" version="1.0.0" retries="0"/>
+    <dubbo:reference id="regionService" interface="com.lyl.yukon.upms.api.service.IRegionService"
+                     check="false" version="1.0.0" retries="0"/>
+    <dubbo:reference id="msgService" interface="com.lyl.yukon.upms.api.service.IMsgService"
+                     check="false" version="1.0.0" retries="0"/>
+
+</beans>

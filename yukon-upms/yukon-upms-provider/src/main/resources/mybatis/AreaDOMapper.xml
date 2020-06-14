@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyl.yukon.upms.provider.dao.AreaDOMapper">
+  <resultMap id="BaseResultMap" type="com.lyl.yukon.common.entity.upms.AreaDO">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="area_code" jdbcType="VARCHAR" property="areaCode"/>
+    <result column="city_code" jdbcType="VARCHAR" property="cityCode"/>
+    <result column="area_name" jdbcType="VARCHAR" property="areaName"/>
+    <result column="short_name" jdbcType="VARCHAR" property="shortName"/>
+    <result column="longitude" jdbcType="VARCHAR" property="longitude"/>
+    <result column="latitude" jdbcType="VARCHAR" property="latitude"/>
+    <result column="sort" jdbcType="INTEGER" property="sort"/>
+    <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, area_code, city_code, area_name, short_name, longitude, latitude, sort, remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from upms_area
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from upms_area
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lyl.yukon.common.entity.upms.AreaDO">
+    insert into upms_area (id, area_code, city_code, 
+      area_name, short_name, longitude, 
+      latitude, sort, remarks
+      )
+    values (#{id,jdbcType=INTEGER}, #{areaCode,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR}, 
+      #{areaName,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lyl.yukon.common.entity.upms.AreaDO">
+    insert into upms_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="areaCode != null">
+        area_code,
+      </if>
+      <if test="cityCode != null">
+        city_code,
+      </if>
+      <if test="areaName != null">
+        area_name,
+      </if>
+      <if test="shortName != null">
+        short_name,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="areaCode != null">
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lyl.yukon.common.entity.upms.AreaDO">
+    update upms_area
+    <set>
+      <if test="areaCode != null">
+        area_code = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lyl.yukon.common.entity.upms.AreaDO">
+    update upms_area
+    set area_code = #{areaCode,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      area_name = #{areaName,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 自定义语句开始 -->
+  <select id="selectByCityCode" resultType="com.lyl.yukon.common.entity.upms.AreaDO">
+    select
+    <include refid="Base_Column_List"/>
+    from upms_area
+    where city_code = #{cityCode}
+    order by sort
+  </select>
+
+
+  <!-- 自定义语句结束 -->
+</mapper>

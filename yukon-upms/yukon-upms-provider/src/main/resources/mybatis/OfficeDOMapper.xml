@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyl.yukon.upms.provider.dao.OfficeDOMapper">
+    <resultMap id="BaseResultMap" type="com.lyl.yukon.common.entity.upms.OfficeDO">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="parent_id" jdbcType="VARCHAR" property="parentId"/>
+        <result column="parent_ids" jdbcType="VARCHAR" property="parentIds"/>
+        <result column="root_id" jdbcType="VARCHAR" property="rootId"/>
+        <result column="office_name" jdbcType="VARCHAR" property="officeName"/>
+        <result column="office_type" jdbcType="CHAR" property="officeType"/>
+        <result column="depth" jdbcType="INTEGER" property="depth"/>
+        <result column="master_name" jdbcType="VARCHAR" property="masterName"/>
+        <result column="master_phone" jdbcType="VARCHAR" property="masterPhone"/>
+        <result column="valid_flag" jdbcType="VARCHAR" property="validFlag"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="create_id" jdbcType="VARCHAR" property="createId"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_id" jdbcType="VARCHAR" property="updateId"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="del_flag" jdbcType="CHAR" property="delFlag"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, parent_id, parent_ids, root_id, office_name, office_type, depth, master_name,
+    master_phone, valid_flag, description, create_id, create_date, update_id, update_date, remarks,
+    del_flag
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_office
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from upms_office
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.lyl.yukon.common.entity.upms.OfficeDO">
+    insert into upms_office (id, parent_id, parent_ids,
+      root_id, office_name, office_type,
+      depth, master_name, master_phone,
+      valid_flag, description, create_id, create_date,
+      update_id, update_date, remarks,
+      del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{parentIds,jdbcType=VARCHAR},
+      #{rootId,jdbcType=VARCHAR}, #{officeName,jdbcType=VARCHAR}, #{officeType,jdbcType=CHAR},
+      #{depth,jdbcType=INTEGER}, #{masterName,jdbcType=VARCHAR}, #{masterPhone,jdbcType=VARCHAR},
+      #{validFlag,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateId,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR},
+      #{delFlag,jdbcType=CHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.lyl.yukon.common.entity.upms.OfficeDO">
+        insert into upms_office
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="parentIds != null">
+                parent_ids,
+            </if>
+            <if test="rootId != null">
+                root_id,
+            </if>
+            <if test="officeName != null">
+                office_name,
+            </if>
+            <if test="officeType != null">
+                office_type,
+            </if>
+            <if test="depth != null">
+                depth,
+            </if>
+            <if test="masterName != null">
+                master_name,
+            </if>
+            <if test="masterPhone != null">
+                master_phone,
+            </if>
+            <if test="validFlag != null">
+                valid_flag,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="createId != null">
+                create_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateId != null">
+                update_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="parentIds != null">
+                #{parentIds,jdbcType=VARCHAR},
+            </if>
+            <if test="rootId != null">
+                #{rootId,jdbcType=VARCHAR},
+            </if>
+            <if test="officeName != null">
+                #{officeName,jdbcType=VARCHAR},
+            </if>
+            <if test="officeType != null">
+                #{officeType,jdbcType=CHAR},
+            </if>
+            <if test="depth != null">
+                #{depth,jdbcType=INTEGER},
+            </if>
+            <if test="masterName != null">
+                #{masterName,jdbcType=VARCHAR},
+            </if>
+            <if test="masterPhone != null">
+                #{masterPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="validFlag != null">
+                #{validFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateId != null">
+                #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lyl.yukon.common.entity.upms.OfficeDO">
+        update upms_office
+        <set>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="parentIds != null">
+                parent_ids = #{parentIds,jdbcType=VARCHAR},
+            </if>
+            <if test="rootId != null">
+                root_id = #{rootId,jdbcType=VARCHAR},
+            </if>
+            <if test="officeName != null">
+                office_name = #{officeName,jdbcType=VARCHAR},
+            </if>
+            <if test="officeType != null">
+                office_type = #{officeType,jdbcType=CHAR},
+            </if>
+            <if test="depth != null">
+                depth = #{depth,jdbcType=INTEGER},
+            </if>
+            <if test="masterName != null">
+                master_name = #{masterName,jdbcType=VARCHAR},
+            </if>
+            <if test="masterPhone != null">
+                master_phone = #{masterPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="validFlag != null">
+                valid_flag = #{validFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                create_id = #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateId != null">
+                update_id = #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=CHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lyl.yukon.common.entity.upms.OfficeDO">
+    update upms_office
+    set parent_id = #{parentId,jdbcType=VARCHAR},
+      parent_ids = #{parentIds,jdbcType=VARCHAR},
+      root_id = #{rootId,jdbcType=VARCHAR},
+      office_name = #{officeName,jdbcType=VARCHAR},
+      office_type = #{officeType,jdbcType=CHAR},
+      depth = #{depth,jdbcType=INTEGER},
+      master_name = #{masterName,jdbcType=VARCHAR},
+      master_phone = #{masterPhone,jdbcType=VARCHAR},
+      valid_flag = #{validFlag,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_id = #{updateId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+    <!-- 自定义语句开始 -->
+    <sql id="Base_Column_List_O">
+    o.id, o.parent_id, o.parent_ids, o.root_id, o.office_name, o.office_type, o.depth, o.master_name,
+    o.master_phone, o.valid_flag, o.description, o.create_id, o.create_date, o.update_id, o.update_date, o.remarks,
+    o.del_flag
+  </sql>
+    <select id="selectAllByOrgId" resultType="com.lyl.yukon.upms.api.dto.OfficeTreeDTO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_office
+        <where>
+            del_flag = '0' and root_id = #{orgId}
+            <if test="validFlag!=null">
+                and valid_flag = #{validFlag}
+            </if>
+        </where>
+        order by create_date
+    </select>
+    <select id="checkOfficeName" resultType="com.lyl.yukon.common.entity.upms.OfficeDO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_office
+        <where>
+            office_name = #{officeName} and del_flag = '0'
+            <if test="officeId!=null and officeId!=''">
+                and id != #{officeId}
+            </if>
+            <if test="orgId!=null and orgId!=''">
+                and root_id = #{orgId}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByUserIdAndOrgId" resultType="com.lyl.yukon.common.entity.upms.OfficeDO">
+        SELECT
+        <include refid="Base_Column_List_O"/>
+        FROM
+        upms_user_office_relation AS uor
+        INNER JOIN upms_office AS o ON uor.office_id = o.id
+        AND o.root_id = #{orgId}
+        AND o.del_flag = '0'
+        WHERE
+        uor.user_id = #{userId}
+        AND uor.del_flag = '0'
+    </select>
+    <!-- 自定义语句结束 -->
+
+</mapper>

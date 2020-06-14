@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="${spring.dubbo.application.name}"/>
+    <!--设置超时时间6s, retries="0"表示只执行一次,超时不去反复执行  -->
+    <dubbo:provider delay="-1" timeout="6000" retries="0"/>
+    <!-- 配置address地址-->
+    <dubbo:registry address="${spring.dubbo.registry.address}"/>
+    <!-- 用dubbo协议在20881端口暴露服务-->
+    <dubbo:protocol name="${spring.dubbo.protocol.name}" port="${spring.dubbo.protocol.port}"/>
+    <!-- 服务接口 -->
+    <dubbo:service interface="com.lyl.yukon.upms.api.service.IUserService"
+                   ref="userService" version="1.0.0" retries="0" />
+    <dubbo:service interface="com.lyl.yukon.upms.api.service.IMenuService"
+                   ref="menuService" version="1.0.0" retries="0"/>
+    <dubbo:service interface="com.lyl.yukon.upms.api.service.IRoleService"
+                   ref="roleService" version="1.0.0" retries="0"/>
+    <dubbo:service interface="com.lyl.yukon.upms.api.service.IOfficeService"
+                   ref="officeService" version="1.0.0" retries="0"/>
+    <dubbo:service interface="com.lyl.yukon.upms.api.service.IDictService"
+                   ref="dictService" version="1.0.0" retries="0"/>
+    <dubbo:service interface="com.lyl.yukon.upms.api.service.IOrgService"
+                   ref="orgService" version="1.0.0" retries="0"/>
+    <dubbo:service interface="com.lyl.yukon.upms.api.service.IRegionService"
+                   ref="regionService" version="1.0.0" retries="0"/>
+    <dubbo:service interface="com.lyl.yukon.upms.api.service.IMsgService"
+                   ref="msgService" version="1.0.0" retries="0"/>
+
+
+</beans>

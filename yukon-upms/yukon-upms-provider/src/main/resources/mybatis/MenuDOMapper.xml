@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyl.yukon.upms.provider.dao.MenuDOMapper">
+    <resultMap id="BaseResultMap" type="com.lyl.yukon.common.entity.upms.MenuDO">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="parent_id" jdbcType="VARCHAR" property="parentId"/>
+        <result column="parent_ids" jdbcType="VARCHAR" property="parentIds"/>
+        <result column="root_id" jdbcType="VARCHAR" property="rootId"/>
+        <result column="menu_name" jdbcType="VARCHAR" property="menuName"/>
+        <result column="menu_key" jdbcType="VARCHAR" property="menuKey"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="href" jdbcType="VARCHAR" property="href"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="menu_type" jdbcType="CHAR" property="menuType"/>
+        <result column="cc_flag" jdbcType="CHAR" property="ccFlag"/>
+        <result column="valid_flag" jdbcType="CHAR" property="validFlag"/>
+        <result column="create_id" jdbcType="VARCHAR" property="createId"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_id" jdbcType="VARCHAR" property="updateId"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="del_flag" jdbcType="CHAR" property="delFlag"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, parent_id, parent_ids, root_id, menu_name, menu_key, sort, href, icon, menu_type,
+    cc_flag, valid_flag, create_id, create_date, update_id, update_date, remarks,
+    del_flag
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_menu
+        where id = #{id,jdbcType=VARCHAR} and del_flag = '0'
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from upms_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.lyl.yukon.common.entity.upms.MenuDO">
+    insert into upms_menu (id, parent_id, parent_ids, root_id,
+      menu_name, menu_key, sort, 
+      href, icon, menu_type, 
+      cc_flag, valid_flag,
+      create_id, create_date, update_id, 
+      update_date, remarks, del_flag
+      )
+    values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{parentIds,jdbcType=VARCHAR},  #{rootId,jdbcType=VARCHAR},
+      #{menuName,jdbcType=VARCHAR}, #{menuKey,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{href,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{menuType,jdbcType=CHAR}, 
+      #{ccFlag,jdbcType=CHAR}, #{validFlag,jdbcType=CHAR},
+      #{createId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateId,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.lyl.yukon.common.entity.upms.MenuDO">
+        insert into upms_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="parentIds != null">
+                parent_ids,
+            </if>
+            <if test="rootId != null">
+                root_id,
+            </if>
+            <if test="menuName != null">
+                menu_name,
+            </if>
+            <if test="menuKey != null">
+                menu_key,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="href != null">
+                href,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="menuType != null">
+                menu_type,
+            </if>
+            <if test="ccFlag != null">
+                cc_flag,
+            </if>
+            <if test="validFlag != null">
+                valid_flag,
+            </if>
+            <if test="createId != null">
+                create_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateId != null">
+                update_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="parentIds != null">
+                #{parentIds,jdbcType=VARCHAR},
+            </if>
+            <if test="rootId != null">
+                #{rootId,jdbcType=VARCHAR},
+            </if>
+            <if test="menuName != null">
+                #{menuName,jdbcType=VARCHAR},
+            </if>
+            <if test="menuKey != null">
+                #{menuKey,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="href != null">
+                #{href,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="menuType != null">
+                #{menuType,jdbcType=CHAR},
+            </if>
+            <if test="ccFlag != null">
+                #{ccFlag,jdbcType=CHAR},
+            </if>
+            <if test="validFlag != null">
+                #{validFlag,jdbcType=CHAR},
+            </if>
+            <if test="createId != null">
+                #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateId != null">
+                #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lyl.yukon.common.entity.upms.MenuDO">
+        update upms_menu
+        <set>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="parentIds != null">
+                parent_ids = #{parentIds,jdbcType=VARCHAR},
+            </if>
+            <if test="rootId != null">
+                root_id = #{rootId,jdbcType=VARCHAR},
+            </if>
+            <if test="menuName != null">
+                menu_name = #{menuName,jdbcType=VARCHAR},
+            </if>
+            <if test="menuKey != null">
+                menu_key = #{menuKey,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="href != null">
+                href = #{href,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="menuType != null">
+                menu_type = #{menuType,jdbcType=CHAR},
+            </if>
+            <if test="ccFlag != null">
+                cc_flag = #{ccFlag,jdbcType=CHAR},
+            </if>
+            <if test="validFlag != null">
+                valid_flag = #{validFlag,jdbcType=CHAR},
+            </if>
+            <if test="createId != null">
+                create_id = #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateId != null">
+                update_id = #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=CHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lyl.yukon.common.entity.upms.MenuDO">
+    update upms_menu
+    set parent_id = #{parentId,jdbcType=VARCHAR},
+      parent_ids = #{parentIds,jdbcType=VARCHAR},
+      root_id = #{rootId,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      menu_key = #{menuKey,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      href = #{href,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      menu_type = #{menuType,jdbcType=CHAR},
+      cc_flag = #{ccFlag,jdbcType=CHAR},
+      valid_flag = #{validFlag,jdbcType=CHAR},
+      create_id = #{createId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_id = #{updateId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <!-- 自定义语句开始 -->
+    <sql id="Base_Column_List_M">
+    m.id, m.parent_id, m.parent_ids, m.root_id, m.menu_name, m.menu_key, m.sort, m.href, m.icon, m.menu_type,
+    m.cc_flag, m.valid_flag, m.create_id, m.create_date, m.update_id, m.update_date, m.remarks,
+    m.del_flag
+  </sql>
+    <select id="selectAll" resultType="com.lyl.yukon.upms.api.dto.MenuTreeDTO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_menu
+        where del_flag = '0'
+        <if test="ccFlag!=null and ccFlag !=''">
+            and cc_flag = #{ccFlag}
+        </if>
+        order by sort
+    </select>
+    <select id="checkMenuName" resultType="com.lyl.yukon.common.entity.upms.MenuDO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_menu
+        <where>
+            menu_name = #{menuName} and del_flag = '0'
+            <if test="menuId!=null and menuId!=''">
+                and id != #{menuId}
+            </if>
+        </where>
+    </select>
+    <select id="selectMaxSort" resultType="java.lang.Integer">
+        SELECT
+            IFNULL( max( sort ), 0 )
+        FROM
+            upms_menu
+    </select>
+    <select id="checkMenuKey" resultType="com.lyl.yukon.common.entity.upms.MenuDO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_menu
+        <where>
+            menu_key = #{menuKey} and del_flag = '0'
+            <if test="menuId!=null and menuId!=''">
+                and id != #{menuId}
+            </if>
+        </where>
+    </select>
+    <select id="selectAdjacentMenu" resultType="com.lyl.yukon.common.entity.upms.MenuDO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_menu
+        where del_flag = '0' and parent_id = #{parentId} and menu_type != '1' and
+        <if test="direction == 0">
+            sort &lt; #{sort}
+            ORDER BY sort
+            limit 1
+        </if>
+        <if test="direction == 1">
+            sort &gt; #{sort}
+            ORDER BY sort desc
+            limit 1
+        </if>
+    </select>
+    <select id="selectMenuListByRoleId" resultType="com.lyl.yukon.common.entity.upms.MenuDO">
+        select
+        <include refid="Base_Column_List_M"/>
+        from upms_menu as m
+        inner join upms_role_menu_relation as rmr on m.id = rmr.menu_id and rmr.role_id = #{roleId} and rmr.del_flag =
+        '0'
+        where m.del_flag = '0'
+    </select>
+    <select id="selectFunctionListByMenuId" resultType="com.lyl.yukon.common.entity.upms.MenuDO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_menu
+        <where>
+            parent_id = #{menuId} and menu_type = '1' and del_flag = '0'
+            <if test="validFlag!=null">
+                and valid_flag != #{validFlag}
+            </if>
+        </where>
+    </select>
+    <select id="selectMenuListByUserIdAndOrgId" resultType="com.lyl.yukon.common.entity.upms.MenuDO">
+        select
+        <include refid="Base_Column_List_M"/>
+        from upms_menu as m
+        inner join upms_user_menu_relation as umr on m.id = umr.menu_id and umr.user_id = #{userId} and umr.del_flag =
+        '0' and umr.org_id = #{orgId}
+        where m.del_flag = '0'
+    </select>
+
+
+    <!-- 自定义语句结束 -->
+
+</mapper>

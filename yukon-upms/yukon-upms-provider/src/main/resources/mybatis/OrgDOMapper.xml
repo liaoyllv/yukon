@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyl.yukon.upms.provider.dao.OrgDOMapper">
+    <resultMap id="BaseResultMap" type="com.lyl.yukon.common.entity.upms.OrgDO">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="master_id" jdbcType="VARCHAR" property="masterId"/>
+        <result column="short_name" jdbcType="VARCHAR" property="shortName"/>
+        <result column="slogan" jdbcType="VARCHAR" property="slogan"/>
+        <result column="logo" jdbcType="VARCHAR" property="logo"/>
+        <result column="province_code" jdbcType="VARCHAR" property="provinceCode"/>
+        <result column="city_code" jdbcType="VARCHAR" property="cityCode"/>
+        <result column="area_code" jdbcType="VARCHAR" property="areaCode"/>
+        <result column="street_code" jdbcType="VARCHAR" property="streetCode"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="create_id" jdbcType="VARCHAR" property="createId"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_id" jdbcType="VARCHAR" property="updateId"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="del_flag" jdbcType="CHAR" property="delFlag"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, master_id, short_name, slogan, logo, province_code, city_code, area_code, street_code,
+    address, description, create_id, create_date, update_id, update_date, remarks, del_flag
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_org
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from upms_org
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.lyl.yukon.common.entity.upms.OrgDO">
+    insert into upms_org (id, master_id, short_name, 
+      slogan, logo, province_code,
+      city_code, area_code, street_code,
+      address, description, create_id, create_date,
+      update_id, update_date, remarks, 
+      del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{masterId,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, 
+      #{slogan,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR},
+      #{cityCode,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR}, #{streetCode,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+      #{updateId,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=CHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.lyl.yukon.common.entity.upms.OrgDO">
+        insert into upms_org
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="masterId != null">
+                master_id,
+            </if>
+            <if test="shortName != null">
+                short_name,
+            </if>
+            <if test="slogan != null">
+                slogan,
+            </if>
+            <if test="logo != null">
+                logo,
+            </if>
+            <if test="provinceCode != null">
+                province_code,
+            </if>
+            <if test="cityCode != null">
+                city_code,
+            </if>
+            <if test="areaCode != null">
+                area_code,
+            </if>
+            <if test="streetCode != null">
+                street_code,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="createId != null">
+                create_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateId != null">
+                update_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="masterId != null">
+                #{masterId,jdbcType=VARCHAR},
+            </if>
+            <if test="shortName != null">
+                #{shortName,jdbcType=VARCHAR},
+            </if>
+            <if test="slogan != null">
+                #{slogan,jdbcType=VARCHAR},
+            </if>
+            <if test="logo != null">
+                #{logo,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceCode != null">
+                #{provinceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityCode != null">
+                #{cityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="areaCode != null">
+                #{areaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="streetCode != null">
+                #{streetCode,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateId != null">
+                #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lyl.yukon.common.entity.upms.OrgDO">
+        update upms_org
+        <set>
+            <if test="masterId != null">
+                master_id = #{masterId,jdbcType=VARCHAR},
+            </if>
+            <if test="shortName != null">
+                short_name = #{shortName,jdbcType=VARCHAR},
+            </if>
+            <if test="slogan != null">
+                slogan = #{slogan,jdbcType=VARCHAR},
+            </if>
+            <if test="logo != null">
+                logo = #{logo,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceCode != null">
+                province_code = #{provinceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityCode != null">
+                city_code = #{cityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="areaCode != null">
+                area_code = #{areaCode,jdbcType=VARCHAR},
+            </if>
+            <if test="streetCode != null">
+                street_code = #{streetCode,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                create_id = #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateId != null">
+                update_id = #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=CHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lyl.yukon.common.entity.upms.OrgDO">
+    update upms_org
+    set master_id = #{masterId,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      slogan = #{slogan,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      area_code = #{areaCode,jdbcType=VARCHAR},
+      street_code = #{streetCode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_id = #{updateId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <!-- 自定义语句开始 -->
+    <sql id="Base_Column_List_O">
+    o.id, o.master_id, o.short_name, o.slogan, o.logo, o.province_code, o.city_code, o.area_code, o.street_code,
+    o.address, o.description, o.create_id, o.create_date, o.update_id, o.update_date, o.remarks, o.del_flag
+  </sql>
+    <select id="selectPage" resultType="com.lyl.yukon.upms.api.dto.OrgListDTO">
+        SELECT
+        o.id,
+        of.office_name,
+        of.master_name,
+        of.master_phone,
+        of.valid_flag,
+        ifnull( r1.province_name, "" ) AS province,
+        ifnull( r2.city_name, "" ) AS city,
+        ifnull( r3.area_name, "" ) AS area,
+        ifnull( r4.street_name, "" ) AS street,
+        o.address
+        FROM
+        upms_org AS o
+        INNER JOIN upms_office AS of ON o.id = of.id
+        LEFT JOIN upms_province AS r1 ON o.province_code = r1.province_code
+        LEFT JOIN upms_city AS r2 ON o.city_code = r2.city_code
+        LEFT JOIN upms_area AS r3 ON o.area_code = r3.area_code
+        LEFT JOIN upms_street AS r4 ON o.street_code = r4.street_code
+        WHERE
+        o.del_flag = '0'
+        <if test="validFlag != null">
+            and of.valid_flag = #{validFlag,jdbcType=CHAR},
+        </if>
+
+        ORDER BY
+        o.update_date DESC
+    </select>
+    <select id="selectDetailById" resultType="com.lyl.yukon.upms.api.dto.OrgDetailDTO">
+        SELECT
+        o.id,
+        o.master_id,
+        o.description,
+        of.office_name,
+        of.master_name,
+        of.master_phone,
+        of.valid_flag,
+        ifnull( r1.province_name, "" ) AS province,
+        ifnull( r2.city_name, "" ) AS city,
+        ifnull( r3.area_name, "" ) AS area,
+        ifnull( r4.street_name, "" ) AS street,
+        o.address
+        FROM
+        upms_org AS o
+        INNER JOIN upms_office AS of ON o.id = of.id
+        LEFT JOIN upms_province AS r1 ON o.province_code = r1.province_code
+        LEFT JOIN upms_city AS r2 ON o.city_code = r2.city_code
+        LEFT JOIN upms_area AS r3 ON o.area_code = r3.area_code
+        LEFT JOIN upms_street AS r4 ON o.street_code = r4.street_code
+        WHERE
+        o.id = #{orgId}
+    </select>
+    <select id="selectSwitchOnOrgByUserId" resultType="com.lyl.yukon.common.entity.upms.OrgDO">
+        SELECT
+        <include refid="Base_Column_List_O"/>
+        FROM
+        upms_org AS o
+        INNER JOIN upms_user_org_relation AS uor ON o.id = uor.org_id and uor.user_id = #{userId} and uor.del_flag = '0'
+        and uor.switch_flag = '1'
+        WHERE
+        o.del_flag = '0'
+    </select>
+
+    <!-- 自定义语句结束 -->
+</mapper>

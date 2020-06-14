@@ -1,0 +1,40 @@
+# Spring boot application
+spring.application.name = yukon-upms-web
+server.port = 8071
+
+# redis
+spring.redis.database = 0
+spring.redis.host = 192.168.0.200
+spring.redis.port = 6379
+spring.redis.password = ccadmin@$8888
+spring.redis.jedis.pool.max-active = 60
+spring.redis.jedis.pool.max-wait = 11ms
+spring.redis.jedis.pool.max-idle = 30
+spring.redis.jedis.pool.min-idle = 6
+spring.redis.timeout = 3000ms
+spring.redis.ssl=false
+
+# log地址
+logging.config = classpath:logbackConfig.xml
+
+# dubbo
+spring.dubbo.application.id = yukon-upms-web
+spring.dubbo.application.name = yukon-upms-web
+spring.dubbo.registry.address = zookeeper://127.0.0.1:2181
+spring.dubbo.server = true
+
+# 密钥
+spring.encryption.rsaPrivateKey = MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJaHbRDaC3zPH54v50IKwlNwKLcGCZSv7LS6Ls950Vt3V7Eyz1LCmcibqut/rhTTlzgOplIuEitky41sXbuWfhngMSxXSSxTDOLgAxSLM6rMWrw6REDBYSIPBEcriGjSi1FrvEfp7Fsvc43CjaQlH7zW7YCQQa9FKHafHviPRvMxAgMBAAECgYADJrqly6rJ5hwnV6FjxI3k6Ugw7LNupXAzKGKqfUZgv9LaJtIoTWKizH97hqTCUturlMLunYBL4ERSpZ4guznQkJdJCh2S/fLhuipOJQ9crclIEHfVPz+kfDIUrsXeDQJTy3satzyWQqV/h1ph4MJSnc6wGZj6GUEH1YFbnyWH8QJBANvf3Zwlq8g7cP49SkYHaau71jilsxS/U44qvspmsQ5wclSgTdBWrKdkcIaZAsEMUStMPjqPpNR4qLkLCrqBV98CQQCvQtKTGBmiWhahlHkJLupV/hYxZ7/Z/meJU8Vr2en7Q8VgdSE4ULza8xfZ04+jeojBB+Z6z/OiG9KmakvHH1bvAkEAhSpUgZmfLKoziQd90GP07/nXiH9ysoIeDOB+pP8FBQW9eNuNxTx5XPhL3nkVXe4jyuFmXvlYjwZ0yX2ShdqIaQJAeeLVI6tdGIXiu1jQnExeeJOOx6lJyceeJel2oT0Z9r75I84R3mJ4FSV+7uStPppXRTfDWKIK5DDJXScLsF3hTQJAaAPJbDWzaz/FE64ZBx+rfy1cDO+iDRUxD4GtO8uotv7FCIWDoyRR0ACJyTgqoUWZgpUrU2eWoxGsa9Y80HQyRg==
+spring.encryption.rsaPublicKey = MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCWh20Q2gt8zx+eL+dCCsJTcCi3BgmUr+y0ui7PedFbd1exMs9SwpnIm6rrf64U05c4DqZSLhIrZMuNbF27ln4Z4DEsV0ksUwzi4AMUizOqzFq8OkRAwWEiDwRHK4ho0otRa7xH6exbL3ONwo2kJR+81u2AkEGvRSh2nx74j0bzMQIDAQAB
+
+# swagger
+swagger.enable = true
+
+# pagehelper
+pagehelper.helperDialect = mysql
+pagehelper.reasonable = true
+pagehelper.supportMethodsArguments = true
+pagehelper.params = count=countSql
+
+# 当前是否处于debug
+isDebug = true

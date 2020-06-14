@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+    <groupId>com.lyl</groupId>
+    <artifactId>yukon</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+
+    <version>4.0.0</version>
+    <packaging>pom</packaging>
+    <name>yukon</name>
+    <description>yukon</description>
+
+
+    <modules>
+        <module>yukon-common</module>
+        <module>yukon-gateway</module>
+        <module>yukon-upms</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.1.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <dubbo.version>2.8.5-SNAPSHOT</dubbo.version>
+        <curator-framework.version>1.3.3</curator-framework.version>
+        <zookeeper.version>3.4.8</zookeeper.version>
+        <zkclient.version>0.1</zkclient.version>
+        <jwt.version>0.6.0</jwt.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
+        <commons-io.version>1.3.2</commons-io.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <springfox.version>2.5.0</springfox.version>
+        <fastjson.version>1.2.10</fastjson.version>
+        <okhttp.version>3.4.1</okhttp.version>
+        <validator.version>5.2.4.Final</validator.version>
+        <ehcache-core.version>2.6.11</ehcache-core.version>
+        <zxing.version>3.2.0</zxing.version>
+        <mybatis.version>3.4.6</mybatis.version>
+        <mybatis-starter.version>1.3.2</mybatis-starter.version>
+        <druid.version>1.0.24</druid.version>
+        <active.version>1.0.24</active.version>
+        <pagehelper.version>4.1.6</pagehelper.version>
+        <webmagic.version>0.6.1</webmagic.version>
+        <bcprov.version>1.60</bcprov.version>
+        <gson.version>2.8.5</gson.version>
+        <pinyin4j.version>2.5.0</pinyin4j.version>
+        <guava.version>20.0</guava.version>
+        <xmemcached.version>2.4.5</xmemcached.version>
+        <apollo.version>1.0.0</apollo.version>
+        <junit.version>4.12</junit.version>
+        <commons-httpclient.version>3.0.1</commons-httpclient.version>
+        <mybatis-generator.version>1.3.7</mybatis-generator.version>
+        <jwt.version>3.4.0</jwt.version>
+        <easyexcel.version>1.1.2-beta5</easyexcel.version>
+        <lombok.version>1.18.8</lombok.version>
+        <zxing.version>3.2.0</zxing.version>
+        <qiniu.version>7.0.10</qiniu.version>
+        <log4jflume.version>1.1.0</log4jflume.version>
+        <gilt.version>0.0.6</gilt.version>
+        <jsoup.version>1.9.2</jsoup.version>
+        <redisson.version>3.11.3</redisson.version>
+        <javax.mail.version>1.6.2</javax.mail.version>
+        <amqp.version>1.5.8.RELEASE</amqp.version>
+    </properties>
+
+    <repositories>
+    </repositories>
+
+    <!--外部申明dependency版本 内部引用无特殊不申明-->
+    <dependencyManagement>
+
+        <dependencies>
+            <dependency>
+                <groupId>com.googlecode.xmemcached</groupId>
+                <artifactId>xmemcached</artifactId>
+                <version>${xmemcached.version}</version>
+            </dependency>
+            <!--拼音jar-->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>${pinyin4j.version}</version>
+            </dependency>
+            <!--dependency boot-test-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>2.0.1.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>0.2.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-starter.version}</version>
+            </dependency>
+            <!-- zookeeper start -->
+            <dependency>
+                <groupId>com.netflix.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator-framework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>log4j-over-slf4j</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+            <!-- zookeeper end -->
+
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.5</version>
+            </dependency>
+
+            <!-- Swagger -->
+            <dependency>
+                <groupId>com.spring4all</groupId>
+                <artifactId>spring-boot-starter-swagger</artifactId>
+                <version>1.5.1.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-spring-web</artifactId>
+                <version>2.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>us.codecraft</groupId>
+                <artifactId>webmagic-core</artifactId>
+                <version>${webmagic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>us.codecraft</groupId>
+                <artifactId>webmagic-extension</artifactId>
+                <version>${webmagic.version}</version>
+            </dependency>
+            <!--apollo远程配置连接 -->
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo-client</artifactId>
+                <version>${apollo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${bcprov.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <!-- google java lib -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${commons-httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-core</artifactId>
+                <version>${mybatis-generator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>javase</artifactId>
+                <version>${zxing.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qiniu</groupId>
+                <artifactId>qiniu-java-sdk</artifactId>
+                <version>${qiniu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gilt.logback</groupId>
+                <artifactId>logback-flume-appender</artifactId>
+                <version>${gilt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <!--rabbitmq依赖-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${amqp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-mail</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>${javax.mail.version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/application*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <excludes>
+                    <exclude>**/application*.yml</exclude>
+                    <exclude>**/*.properties</exclude>
+                    <exclude>**/*.xml</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.20.1</version>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

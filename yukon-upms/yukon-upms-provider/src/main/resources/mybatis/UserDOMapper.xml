@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyl.yukon.upms.provider.dao.UserDOMapper">
+    <resultMap id="BaseResultMap" type="com.lyl.yukon.common.entity.upms.UserDO">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="gender" jdbcType="CHAR" property="gender"/>
+        <result column="valid_flag" jdbcType="VARCHAR" property="validFlag"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="create_id" jdbcType="VARCHAR" property="createId"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="update_id" jdbcType="VARCHAR" property="updateId"/>
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="del_flag" jdbcType="CHAR" property="delFlag"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, phone, password, user_name, real_name, email, avatar, gender, valid_flag, description, create_id,
+    create_date, update_id, update_date, remarks, del_flag
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_user
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from upms_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.lyl.yukon.common.entity.upms.UserDO">
+    insert into upms_user (id, phone, password, 
+      user_name, real_name, email, 
+      avatar, gender, valid_flag, description,
+      create_id, create_date, update_id, 
+      update_date, remarks, del_flag
+      )
+    values (#{id,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, #{validFlag,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+      #{createId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateId,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.lyl.yukon.common.entity.upms.UserDO">
+        insert into upms_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="avatar != null">
+                avatar,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="validFlag != null">
+                valid_flag,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="createId != null">
+                create_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="updateId != null">
+                update_id,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="delFlag != null">
+                del_flag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+                #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=CHAR},
+            </if>
+            <if test="validFlag != null">
+                #{validFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateId != null">
+                #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                #{delFlag,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lyl.yukon.common.entity.upms.UserDO">
+        update upms_user
+        <set>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                real_name = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=CHAR},
+            </if>
+            <if test="validFlag != null">
+                valid_flag = #{validFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null">
+                create_id = #{createId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateId != null">
+                update_id = #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="delFlag != null">
+                del_flag = #{delFlag,jdbcType=CHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lyl.yukon.common.entity.upms.UserDO">
+    update upms_user
+    set phone = #{phone,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      valid_flag = #{validFlag,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      create_id = #{createId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_id = #{updateId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+    <!-- 自定义语句开始 -->
+    <select id="selectByUserMobile" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_user
+        where phone = #{phone}
+    </select>
+    <select id="selectUserPage" resultType="com.lyl.yukon.common.entity.upms.UserDO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_user
+        <where>
+            del_flag = '0'
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+        </where>
+        order by create_date
+    </select>
+    <select id="selectByPhone" resultType="com.lyl.yukon.common.entity.upms.UserDO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_user
+        where
+        del_flag = '0'
+        and phone = #{phone}
+    </select>
+
+    <!-- 自定义语句结束 -->
+
+</mapper>

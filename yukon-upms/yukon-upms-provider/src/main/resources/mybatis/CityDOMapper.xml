@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyl.yukon.upms.provider.dao.CityDOMapper">
+    <resultMap id="BaseResultMap" type="com.lyl.yukon.common.entity.upms.CityDO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="city_code" jdbcType="VARCHAR" property="cityCode"/>
+        <result column="city_name" jdbcType="VARCHAR" property="cityName"/>
+        <result column="short_name" jdbcType="VARCHAR" property="shortName"/>
+        <result column="province_code" jdbcType="VARCHAR" property="provinceCode"/>
+        <result column="longitude" jdbcType="VARCHAR" property="longitude"/>
+        <result column="latitude" jdbcType="VARCHAR" property="latitude"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, city_code, city_name, short_name, province_code, longitude, latitude, sort, remarks
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_city
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from upms_city
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.lyl.yukon.common.entity.upms.CityDO">
+    insert into upms_city (id, city_code, city_name, 
+      short_name, province_code, longitude, 
+      latitude, sort, remarks
+      )
+    values (#{id,jdbcType=INTEGER}, #{cityCode,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, 
+      #{shortName,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.lyl.yukon.common.entity.upms.CityDO">
+        insert into upms_city
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cityCode != null">
+                city_code,
+            </if>
+            <if test="cityName != null">
+                city_name,
+            </if>
+            <if test="shortName != null">
+                short_name,
+            </if>
+            <if test="provinceCode != null">
+                province_code,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="cityCode != null">
+                #{cityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityName != null">
+                #{cityName,jdbcType=VARCHAR},
+            </if>
+            <if test="shortName != null">
+                #{shortName,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceCode != null">
+                #{provinceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                #{longitude,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lyl.yukon.common.entity.upms.CityDO">
+        update upms_city
+        <set>
+            <if test="cityCode != null">
+                city_code = #{cityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="cityName != null">
+                city_name = #{cityName,jdbcType=VARCHAR},
+            </if>
+            <if test="shortName != null">
+                short_name = #{shortName,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceCode != null">
+                province_code = #{provinceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lyl.yukon.common.entity.upms.CityDO">
+    update upms_city
+    set city_code = #{cityCode,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      province_code = #{provinceCode,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <!-- 自定义语句开始 -->
+    <select id="selectByProvinceCode" resultType="com.lyl.yukon.common.entity.upms.CityDO">
+        select
+        <include refid="Base_Column_List"/>
+        from upms_city
+        where province_code = #{provinceCode}
+        order by sort
+    </select>
+
+
+    <!-- 自定义语句结束 -->
+
+</mapper>
